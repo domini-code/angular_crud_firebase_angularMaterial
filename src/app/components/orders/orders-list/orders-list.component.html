@@ -1,0 +1,44 @@
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!-- order Column -->
+  <ng-container matColumnDef="orderNumber">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Number</th>
+    <td mat-cell *matCellDef="let element"> {{element.orderNumber}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="customerName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.customerName}} </td>
+  </ng-container>
+
+  <!-- product Column -->
+  <ng-container matColumnDef="order">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> product </th>
+    <td mat-cell *matCellDef="let element"> {{element.order}} </td>
+  </ng-container>
+
+  <!-- completed Column -->
+  <ng-container matColumnDef="completed">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
+    <td mat-cell *matCellDef="let element"> {{element.completed}} </td>
+  </ng-container>
+
+  <!-- total Column -->
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total</th>
+    <td mat-cell *matCellDef="let element"> {{element.totalOrder}}€ </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon (click)="onChangeStatus(element)">edit</mat-icon>
+      &nbsp;
+      <mat-icon (click)="onDelete(element.id)">delete</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

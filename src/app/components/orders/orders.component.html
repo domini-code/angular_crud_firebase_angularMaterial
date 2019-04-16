@@ -1,0 +1,41 @@
+<div class="header-app">
+  <h1>Welcome to {{appName}}</h1>
+</div>
+<div class="buttons-lists">
+  <button mat-raised-button color="primary" class="myButton" *ngFor="let product of products" (click)="onAddProduct(product)">
+    {{product.name}} / {{product.price}}
+  </button>
+
+  <form [formGroup]="this.orderService.myForm" (ngSubmit)="onSubmit()">
+    <table cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput #orderNumber maxlength="3" placeholder="Order Number" formControlName="orderNumber">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput #orderNumber maxlength="13" placeholder="Customer" formControlName="customerName">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button mat-raised-button color="primary" class="btn-send">SEND</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<ul class="collection">
+  <li *ngFor="let order of tempOrder">
+    <span>{{order}}</span>
+    <a href="#" (click)="removeItemTempOrder(order)">
+      <mat-icon>delete</mat-icon>
+    </a>
+  </li>
+</ul>
